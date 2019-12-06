@@ -1,4 +1,4 @@
-name: Build
+name: Build&Deploy
 
 on: [push]
 
@@ -15,11 +15,17 @@ jobs:
       run: ./pharo Pharo.image metacello install filetree://. BaselineOfMDownToHTMLLambda
     - name: zip
       run: zip -r function.zip *.image *.changes *.sources pharo pharo-vm bootstrap
-    - name: ll
-      run: ls -al
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: function
         path: function.zip
+    - name: AWS Lambda Deploy
+      uses: stcalica/update-lambda
+      with:
+        package: function.zip
+        function-name: MDownToHTMLLambda
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+        AWS_SECRET_ID: ${{ secrets.AWS_SECRET_ID }}
+        AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
     
