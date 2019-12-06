@@ -12,7 +12,7 @@ jobs:
     - name: Download pharo
       run: wget -O- https://get.pharo.org/stable+vm | bash
     - name: setup
-      run: sudo apt-get install libz-dev
+      run: sudo apt-get install libz-dev libgit2-dev
     - name: Build image
       run: ./pharo Pharo.image metacello install filetree://. BaselineOfMDownToHTMLLambda
     - name: mv bootstrap
