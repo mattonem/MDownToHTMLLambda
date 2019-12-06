@@ -13,6 +13,8 @@ jobs:
         path: 'repo' 
     - name: Download pharo
       run: wget -O- https://get.pharo.org/stable+vm | bash
+    - name: ll
+      run: ls -al
     - name: Build image
       run: ./pharo Pharo.image metacello install filetree://repo BaselineOfMDownToHTMLLambda
     - name: mv bootstrap
