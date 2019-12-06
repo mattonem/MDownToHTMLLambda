@@ -15,7 +15,7 @@ jobs:
       run: ./pharo Pharo.image metacello install filetree://. BaselineOfMDownToHTMLLambda
     - name: create bootstrap
       run: |
-        echo -e "#\!/bin/sh\n./pharo Pharo.image --no-default-preferences MDownToHTMLLambda start" > bootstrap
+        echo -e '#!/bin/sh\n./pharo Pharo.image --no-default-preferences MDownToHTMLLambda start' > bootstrap
         chmod +x bootstrap 
     - name: zip
       run: zip -r function.zip *.image *.changes *.sources pharo pharo-vm bootstrap
