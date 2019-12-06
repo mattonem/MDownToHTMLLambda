@@ -18,9 +18,9 @@ jobs:
     - name: mv bootstrap
       run: mv repo/bootstrap boostrap
     - name: zip
-      - run: zip -r function.zip *.image *.changes *.sources pharo pharo-vm bootstrap
+      run: zip -r function.zip *.image *.changes *.sources pharo pharo-vm bootstrap
     - name: ll
-      - ls -al
+      run: ls -al
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
