@@ -1,0 +1,15 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Download pharo
+      run: wget -O- https://get.pharo.org/stable+vm | bash
+    - name: pwd
+      run: ls -al
