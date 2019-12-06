@@ -21,7 +21,7 @@ jobs:
         name: function
         path: function.zip
     - name: AWS Lambda Deploy
-      uses: stcalica/update-lambda
+      uses: stcalica/update-lambda@0.0.2
       with:
         package: function.zip
         function-name: MDownToHTMLLambda
