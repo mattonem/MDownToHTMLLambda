@@ -10,9 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Download pharo
-      run: wget -O- https://get.pharo.org/stable+vm | bash
-    - name: setup
-      run: sudo apt-get install libz-dev libgit2-dev
+      run: wget -O- https://get.pharo.org/64/stable+vm | bash
+#    - name: setup
+#      run: sudo apt-get install libz-dev libgit2-dev
     - name: Build image
       run: ./pharo Pharo.image metacello install filetree://. BaselineOfMDownToHTMLLambda
     - name: mv bootstrap
