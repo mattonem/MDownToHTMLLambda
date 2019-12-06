@@ -9,7 +9,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+      with:
+        path: 'repo' 
     - name: Download pharo
       run: wget -O- https://get.pharo.org/stable+vm | bash
-    - name: pwd
-      run: ls -al
+    - name: Build image
+      run: ./pharo Pharo.image metacello install filetree://repo BaselineOfMDownToHTMLLambda
+    - name: mv bootstrap
+      run: mv repo/bootstrap boostrap
+    - name: zip
+      - run: zip -r function.zip *.image *.changes *.sources pharo pharo-vm bootstrap
+    - name: ll
+      - ls -al
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: function
+        path: function.zip
+    
